@@ -4,6 +4,7 @@ import db from "./db/db.mjs";
 import cors from "cors";
 import newsRouter from "./routes/newsRouter.mjs";
 import multer from "multer";
+import authRouter from "./routes/authRouter.mjs";
 
 const app = express();
 
@@ -37,8 +38,9 @@ app.post("/upload-img", upload.single("image"), function (req, res, next) {
 
 app.use("/books", booksRouter);
 app.use("/news", newsRouter);
+app.use("/authorization", authRouter);
 app.use(express.static("public"));
 
 app.listen(4000, () => {
-  console.log("server is raning ");
+  console.log("server is raning");
 });
